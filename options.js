@@ -29,7 +29,20 @@ function constructOptions(buttonColors) {
             // ..create a button with that color..
             let button = document.createElement('button')
             button.dataset.color = buttonColor;
+            button.style.backgroundColor = buttonColor;
+            
+            // ..mark the currently selected color.. 
+            if (buttonColor == currentColor){
+                button.classList.add(selectedClassName); 
+            }
 
+            // ..and register a listern for when that button is clicked
+            button.addEventListener('click', handleButtonClick()); 
+            page.appendChild(button);
         }
-    })
+        
+    }); 
 }
+
+// Initialize the page by contructing the color options 
+constructOptions(presetButtonColors); 
